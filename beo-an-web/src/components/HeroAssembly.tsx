@@ -38,17 +38,17 @@ export default function HeroAssembly() {
 
       // Make the logo "face" the cursor
       // If mouse is on right (xOffset > 0), rotateY should be negative to bring right side closer
-      rotateYTo(-xOffset * 30);
+      rotateYTo(-xOffset * 12);
       // If mouse is at bottom (yOffset > 0), rotateX should be positive to bring bottom side closer
-      rotateXTo(yOffset * 30);
+      rotateXTo(yOffset * 12);
       
       // Slight positional shift towards the cursor
-      translateXTo(xOffset * 40);
-      translateYTo(yOffset * 40);
+      translateXTo(xOffset * 15);
+      translateYTo(yOffset * 15);
 
-      // Extreme shadow parallax - shadow moves radically opposite to light source
-      shadowXTo(-xOffset * 120);
-      shadowYTo(-yOffset * 120 + 200); // Base ground offset of +200px down
+      // Shadow parallax - shadow moves opposite to light source (subtle)
+      shadowXTo(-xOffset * 40);
+      shadowYTo(-yOffset * 40 + 200); // Base ground offset of +200px down
     };
 
     window.addEventListener("mousemove", handleMouseMove);
