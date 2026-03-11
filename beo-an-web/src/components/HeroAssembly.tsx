@@ -28,10 +28,9 @@ export default function HeroAssembly() {
     const shadowYTo = gsap.quickTo(shadowRef.current, "y", { duration: 0.8, ease: "power3.out" });
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width; // 0 to 1
-      const y = (e.clientY - rect.top) / rect.height; // 0 to 1
+      // Use window innerWidth/innerHeight for global screen tracking
+      const x = e.clientX / window.innerWidth; // 0 to 1
+      const y = e.clientY / window.innerHeight; // 0 to 1
 
       // Map to -1 to 1 range
       const xOffset = (x - 0.5) * 2;
@@ -52,7 +51,7 @@ export default function HeroAssembly() {
       shadowYTo(-yOffset * 120 + 200); // Base ground offset of +200px down
     };
 
-    containerRef.current.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     const ctx = gsap.context(() => {
       // Set initial ground projection shadow state
@@ -137,9 +136,7 @@ export default function HeroAssembly() {
     }, containerRef);
 
     return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("mousemove", handleMouseMove);
-      }
+      window.removeEventListener("mousemove", handleMouseMove);
       ctx.revert();
     };
   }, []);
@@ -179,7 +176,7 @@ export default function HeroAssembly() {
          {/* Shadow Layer: A blurred duplicate of the logo perfectly matching its geometry */}
          <div 
            ref={shadowRef}
-           className="absolute w-[90vw] md:w-[70vw] max-w-[1000px] h-[30vh] md:h-[500px]"
+           className="absolute w-[95vw] md:w-[85vw] max-w-[1200px] h-[40vh] md:h-[600px]"
          >
            <Image 
              src="/hero_3d_text_bria.png" 
@@ -193,7 +190,7 @@ export default function HeroAssembly() {
          {/* Foreground Logo Layer */}
          <div 
            ref={logoRef} 
-           className="relative w-[90vw] md:w-[70vw] max-w-[1000px] h-[30vh] md:h-[500px]"
+           className="relative w-[95vw] md:w-[85vw] max-w-[1200px] h-[40vh] md:h-[600px]"
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
