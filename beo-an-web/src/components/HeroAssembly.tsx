@@ -39,37 +39,46 @@ export default function HeroAssembly() {
 
       // Make the logo "face" the cursor
       // If mouse is on right (xOffset > 0), rotateY should be negative to bring right side closer
-      rotateYTo(-xOffset * 25);
+      rotateYTo(-xOffset * 30);
       // If mouse is at bottom (yOffset > 0), rotateX should be positive to bring bottom side closer
-      rotateXTo(yOffset * 25);
+      rotateXTo(yOffset * 30);
       
       // Slight positional shift towards the cursor
-      translateXTo(xOffset * 30);
-      translateYTo(yOffset * 30);
+      translateXTo(xOffset * 40);
+      translateYTo(yOffset * 40);
 
-      // Shadow moves away from the cursor (parallax effect)
-      shadowXTo(-xOffset * 60);
-      shadowYTo(-yOffset * 60 + 40); // Base shadow offset of +40px downwards
+      // Extreme shadow parallax - shadow moves radically opposite to light source
+      shadowXTo(-xOffset * 120);
+      shadowYTo(-yOffset * 120 + 200); // Base ground offset of +200px down
     };
 
     containerRef.current.addEventListener("mousemove", handleMouseMove);
 
     const ctx = gsap.context(() => {
+      // Set initial ground projection shadow state
+      gsap.set(shadowRef.current, {
+        scaleY: 0.6,
+        filter: "blur(40px)",
+        opacity: 0.35,
+        y: 200
+      });
+
       // Gentle continuous floating animation
       gsap.to(logoRef.current, {
-        y: "-=25",
+        y: "-=35",
         duration: 2.5,
         yoyo: true,
         repeat: -1,
         ease: "sine.inOut"
       });
 
-      // Shadow scales and diffuses as the object "floats" higher
+      // Shadow scales and diffuses as the object floats higher
       gsap.to(shadowRef.current, {
         y: "+=15",
-        opacity: 0.25,
-        scale: 0.95,
-        filter: "blur(35px)",
+        opacity: 0.15,
+        scaleY: 0.5,
+        scaleX: 0.9,
+        filter: "blur(55px)",
         duration: 2.5,
         yoyo: true,
         repeat: -1,
@@ -170,7 +179,7 @@ export default function HeroAssembly() {
          {/* Shadow Layer: A blurred duplicate of the logo perfectly matching its geometry */}
          <div 
            ref={shadowRef}
-           className="absolute w-[90vw] md:w-[70vw] max-w-[1000px] h-[30vh] md:h-[500px] opacity-40 blur-2xl"
+           className="absolute w-[90vw] md:w-[70vw] max-w-[1000px] h-[30vh] md:h-[500px]"
          >
            <Image 
              src="/hero_3d_text_bria.png" 
