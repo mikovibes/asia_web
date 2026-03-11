@@ -1,0 +1,243 @@
+[
+  {
+    "category": "Bánh Mì",
+    "items": [
+      {
+        "name": "Kuřecí Bánh Mì",
+        "description": "Kuřecí maso, čerstvá zelenina, nakládaná zelenina, BĂ Mayo, bylinky",
+        "tags": []
+      },
+      {
+        "name": "Béo Ăn Bánh Mì",
+        "description": "Char Siu Bůček, čerstvá zelenina, nakládaná zelenina, BĂ Mayo, bylinky",
+        "tags": ["signature"]
+      },
+      {
+        "name": "Vege Bánh Mì",
+        "description": "Tofu, čerstvá zelenina, nakládaná zelenina, BĂ Mayo, bylinky",
+        "tags": ["vegetarian"]
+      },
+      {
+        "name": "Special Bánh Mì",
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "category": "Fried",
+    "items": [
+      {
+        "name": "BĂGC - Smažené kuře",
+        "description": "OG / Spicy Honey / Limitka",
+        "tags": ["signature", "spicy"]
+      },
+      {
+        "name": "Smažák",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Hranolky",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Krokety",
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "category": "BĂ Talíř",
+    "description": "1. Omáčka | 2. Maso | 3. Příloha",
+    "items": [
+      {
+        "name": "1. Omáčka",
+        "description": "Zelenina na citrónové trávě, Thajské kari, Kung Pao, Pepřová omáčka, Bambus s houbami, Teriyaki, Na cibulce, Sladkokyselá omáčka",
+        "tags": []
+      },
+      {
+        "name": "2. Maso / Tofu",
+        "description": "Kuřecí, Vepřové, Hovězí, Tofu, Krevety",
+        "tags": []
+      },
+      {
+        "name": "3. Příloha",
+        "description": "Rýže, Hranolky, Krokety, Nudle, Bez přílohy",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "category": "Předkrmy & Přílohy",
+    "items": [
+      {
+        "name": "TomYum polévka",
+        "description": "",
+        "tags": ["spicy"]
+      },
+      {
+        "name": "Pekingská polévka",
+        "description": "",
+        "tags": ["spicy"]
+      },
+      {
+        "name": "Smažené Závitky Nem Rán 3x",
+        "description": "",
+        "tags": ["meat", "vegetarian"]
+      },
+      {
+        "name": "Letní Závitky Nem Cuon 3x",
+        "description": "",
+        "tags": ["meat", "vegetarian"]
+      },
+      {
+        "name": "Restovaná sezónní zelenina",
+        "description": "",
+        "tags": ["vegan"]
+      },
+      {
+        "name": "Kuřecí gyros",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Kečup, tatarka, BĂ mayo",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Samostatné přílohy z BĂ talíře",
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "category": "Nápoje",
+    "items": [
+      {
+        "name": "Voda s citrusy",
+        "description": "0.5l / 1l",
+        "tags": []
+      },
+      {
+        "name": "Limonády v lednici",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Točená limonáda / Domácí limonáda",
+        "description": "0.3l / 0.5l",
+        "tags": []
+      },
+      {
+        "name": "Čaj dle denní nabídky",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Cà phê Phin",
+        "description": "Vietnamská překapávaná káva",
+        "tags": []
+      },
+      {
+        "name": "Čepované Starobrno",
+        "description": "0.3l / 0.5l",
+        "tags": []
+      },
+      {
+        "name": "Panáky",
+        "description": "Vodka, Gin, Jägermeister, Cpt. Morgan, Fernet, Jack Daniel's, Mandlovka, Republica",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "category": "OG",
+    "items": [
+      {
+        "name": "Bún Bò Nam Bộ",
+        "description": "",
+        "tags": []
+      },
+      {
+        "name": "Bún Chả",
+        "description": "",
+        "tags": ["signature"]
+      },
+      {
+        "name": "Phở Bò Chín / Tái",
+        "description": "Hovězí - well done / rare",
+        "tags": []
+      },
+      {
+        "name": "Phở Gà / Tofu",
+        "description": "Kuřecí / Tofu",
+        "tags": ["signature", "vegetarian"]
+      },
+      {
+        "name": "Phở mix",
+        "description": "Kuřecí + hovězí",
+        "tags": []
+      },
+      {
+        "name": "Bún Nem",
+        "description": "",
+        "tags": ["signature"]
+      },
+      {
+        "name": "Tofu v rajčatové omáčce",
+        "description": "",
+        "tags": ["vegetarian"]
+      }
+    ]
+  },
+  {
+    "category": "Wok",
+    "items": [
+      {
+        "name": "Restované pšeničné nudle / rýže / Phở nudle / Bún nudle",
+        "description": "kuřecí, hovězí, vepřové, tofu / krevety + 20 Kč",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "category": "Special",
+    "items": [
+      {
+        "name": "Pad Thai",
+        "description": "Pad Thai nudle, vajíčko, restovaná zelenina, arašídy, limeta, tamarind, chilli, citronová tráva. (hovězí, vepřový, kuřecí, tofu / krevety + 20 Kč)",
+        "tags": []
+      },
+      {
+        "name": "Restované Udon nudle",
+        "description": "restovaná zelenina, vajíčko. (hovězí, vepřový, kuřecí, tofu / krevety + 20 Kč)",
+        "tags": []
+      },
+      {
+        "name": "Bibimbap",
+        "description": "rýže, čerstvá zelenina, nakládaná zelenina, restovaná zelenina, volské oko, sezam, sojová omáčka. (hovězí, vepřový, kuřecí, tofu / krevety + 20 Kč)",
+        "tags": []
+      },
+      {
+        "name": "Japchae",
+        "description": "korejské skleněné nudle, restovaná zelenina, sezam. (hovězí, vepřový, kuřecí, tofu / krevety + 20 Kč)",
+        "tags": []
+      },
+      {
+        "name": "Křupavá kachna s rýží",
+        "description": "omáčka dle výběru",
+        "tags": []
+      },
+      {
+        "name": "Křupavé kuře s rýží",
+        "description": "omáčka dle výběru",
+        "tags": []
+      }
+    ]
+  }
+]

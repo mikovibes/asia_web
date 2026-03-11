@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Nunito:wght@400;700;900&display=swap');
+
+:root {
+  --beo-yellow: #fde047;
+  --beo-blue: #3b82f6; 
+  --beo-black: #111827;
+  --font-dynapuff: 'DynaPuff', cursive;
+  --font-nunito: 'Nunito', sans-serif;
+}
+
+body {
+  font-family: var(--font-nunito);
+  background-color: var(--beo-yellow);
+  color: var(--beo-black);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Tailwind classes mapped for standalone use if not using Tailwind's JIT layer */
+.text-cartoon {
+  font-family: var(--font-dynapuff), sans-serif;
+  -webkit-text-stroke: 2px var(--beo-black);
+  color: white;
+  text-shadow: 4px 4px 0 var(--beo-black);
+}
+
+.text-beo-blue {
+    color: var(--beo-blue);
+}
+
+.text-beo-black {
+    color: var(--beo-black);
+}
+
+.bg-beo-yellow {
+    background-color: var(--beo-yellow);
+}
+
+.border-beo-black {
+    border-color: var(--beo-black);
+}
+
+.font-nunito {
+    font-family: var(--font-nunito);
+}

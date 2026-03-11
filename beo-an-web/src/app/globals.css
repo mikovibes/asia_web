@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --beo-yellow: #fde047; /* Bright cartoon yellow */
+  --beo-blue: #3b82f6; /* Vibrant blue from noodle bowl */
+  --beo-black: #111827; /* Deep black for prominent outlines */
+}
+
+@layer base {
+  body {
+    background-color: var(--beo-yellow);
+    color: var(--beo-black);
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .text-cartoon {
+    font-family: var(--font-dynapuff), sans-serif;
+    -webkit-text-stroke: 2px var(--beo-black);
+    color: white;
+    text-shadow: 4px 4px 0 var(--beo-black);
+  }
+  
+  .box-cartoon {
+    background-color: white;
+    border: 4px solid var(--beo-black);
+    box-shadow: 8px 8px 0 var(--beo-black);
+    border-radius: 1rem;
+  }
+
+  /* Lenis smooth scrolling requires html to be hidden overflow sometimes or just specific properties. */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+}
