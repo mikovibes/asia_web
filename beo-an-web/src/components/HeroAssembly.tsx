@@ -12,6 +12,7 @@ export default function HeroAssembly() {
   const textRef = useRef<HTMLHeadingElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
+  const phoRef = useRef<HTMLDivElement>(null);
   
   const floatingImagesRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -62,10 +63,19 @@ export default function HeroAssembly() {
         y: 200
       });
 
-      // Gentle continuous floating animation
+      // Gentle continuous floating animation for the main logo
       gsap.to(logoRef.current, {
         y: "-=35",
         duration: 2.5,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+
+      // Independent slower floating animation for the Pho Bowl
+      gsap.to(phoRef.current, {
+        y: "+=20",
+        duration: 3.2,
         yoyo: true,
         repeat: -1,
         ease: "sine.inOut"
@@ -118,9 +128,9 @@ export default function HeroAssembly() {
         );
       });
 
-      // The 2.5D logo and shadow scale down and move up on scroll
+      // The 2.5D logo, Pho bowl, and shadow scale down and move up on scroll
       tl.to(
-        [logoRef.current, shadowRef.current],
+        [logoRef.current, shadowRef.current, phoRef.current],
         { scale: 0.5, y: -300, ease: "power2.inOut" },
         0
       );
@@ -168,6 +178,21 @@ export default function HeroAssembly() {
             />
           </div>
         ))}
+      </div>
+
+      {/* 3D Pho Bowl (Layered between background and main text) */}
+      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[20vh] md:translate-y-[28vh]">
+         <div 
+           ref={phoRef}
+           className="relative w-[70vw] md:w-[45vw] max-w-[700px] h-[35vh] md:h-[500px]"
+         >
+           <Image 
+             src="/pho_soup_bria.png" 
+             alt="Delicious Pho Soup" 
+             fill
+             className="object-contain drop-shadow-2xl"
+           />
+         </div>
       </div>
 
       {/* 2.5D Interactive Image Logo Group */}
