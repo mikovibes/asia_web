@@ -59,17 +59,7 @@ export default function HeroAssembly() {
       gsap.set(shadowRef.current, {
         scaleY: 0.6,
         filter: "blur(40px)",
-        opacity: 0.35,
         y: 200
-      });
-
-      // Gentle continuous floating animation for the main logo
-      gsap.to(logoRef.current, {
-        y: "-=35",
-        duration: 2.5,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut"
       });
 
       // Independent slower floating animation for the Pho Bowl
@@ -81,18 +71,44 @@ export default function HeroAssembly() {
         ease: "sine.inOut"
       });
 
-      // Shadow scales and diffuses as the object floats higher
-      gsap.to(shadowRef.current, {
-        y: "+=15",
-        opacity: 0.15,
-        scaleY: 0.5,
-        scaleX: 0.9,
-        filter: "blur(55px)",
-        duration: 2.5,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut"
+      // Entrance Sequence: Text rises out of the Pho bowl like steam
+      const entranceTl = gsap.timeline({
+        onComplete: () => {
+          // Gentle continuous floating animation starts AFTER entrance is done
+          gsap.to(logoRef.current, {
+            y: "-=35",
+            duration: 2.5,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut"
+          });
+
+          // Shadow floating physics
+          gsap.to(shadowRef.current, {
+            y: "+=15",
+            opacity: 0.15,
+            scaleY: 0.5,
+            scaleX: 0.9,
+            filter: "blur(55px)",
+            duration: 2.5,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut"
+          });
+        }
       });
+
+      entranceTl.fromTo(
+        logoRef.current,
+        { scale: 0, opacity: 0, y: 150, rotationZ: -5 },
+        { scale: 1, opacity: 1, y: 0, rotationZ: 0, duration: 2, ease: "elastic.out(1, 0.7)" },
+        0.5 // slight delay on load
+      ).fromTo(
+        shadowRef.current,
+        { scaleX: 0, opacity: 0, y: 300 }, // Shadow starts very small and deep
+        { scaleX: 1, opacity: 0.35, y: 200, duration: 2, ease: "elastic.out(1, 0.7)" },
+        0.5
+      );
 
       const tl = gsap.timeline({
         scrollTrigger: {
