@@ -222,7 +222,7 @@ export default function HeroAssembly() {
       </div>
 
       {/* 3D Pho Bowl & Steam System (Layered between background and main text) */}
-      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[12vh] md:translate-y-[14vh]">
+      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[12vh] md:translate-y-[15vh]">
          {/* Steam Clouds */}
          <div className="absolute inset-0 flex items-center justify-center z-[18]">
             {[...Array(5)].map((_, i) => (
@@ -243,20 +243,20 @@ export default function HeroAssembly() {
 
          <div 
            ref={phoRef}
-           className="relative w-[68vw] md:w-[45vw] max-w-[650px] h-[35vh] md:h-[450px] translate-x-[6vw]"
+           className="relative w-[60vw] md:w-[38vw] max-w-[600px] h-[30vh] md:h-[420px] translate-x-[3vw]"
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
              src="/pho_soup_bria.png" 
              alt="Delicious Pho Soup" 
              fill
-             className="object-contain drop-shadow-[0_40px_60px_rgba(255,165,0,0.45)]"
+             className="object-contain drop-shadow-[0_45px_70px_rgba(255,165,0,0.5)]"
            />
          </div>
       </div>
 
       {/* 2.5D Interactive Image Logo Group */}
-      <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-center w-full h-full perspective-[1200px] translate-y-[2vh] md:translate-y-[5vh]">
+      <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-center w-full h-full perspective-[1200px] -translate-y-[15vh] md:-translate-y-[20vh]">
          
          {/* Shadow Layer: A blurred duplicate of the logo perfectly matching its geometry */}
          <div 
