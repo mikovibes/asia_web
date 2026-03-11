@@ -222,7 +222,7 @@ export default function HeroAssembly() {
       </div>
 
       {/* 3D Pho Bowl & Steam System (Layered between background and main text) */}
-      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[10vh] md:translate-y-[12vh]">
+      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[18vh] md:translate-y-[24vh]">
          {/* Steam Clouds */}
          <div className="absolute inset-0 flex items-center justify-center z-[18]">
             {[...Array(5)].map((_, i) => (
@@ -243,7 +243,7 @@ export default function HeroAssembly() {
 
          <div 
            ref={phoRef}
-           className="relative w-[63vw] md:w-[40vw] max-w-[630px] h-[32vh] md:h-[450px]"
+           className="relative w-[63vw] md:w-[40vw] max-w-[630px] h-[32vh] md:h-[450px] translate-x-[2vw]"
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
