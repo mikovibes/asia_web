@@ -243,7 +243,7 @@ export default function HeroAssembly() {
 
          <div 
            ref={phoRef}
-           className="relative w-[60vw] md:w-[38vw] max-w-[600px] h-[30vh] md:h-[420px] translate-x-[3vw]"
+           className="relative w-[45vw] md:w-[28vw] max-w-[450px] h-[30vh] md:h-[350px] translate-x-[3vw]"
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
@@ -261,7 +261,7 @@ export default function HeroAssembly() {
          {/* Shadow Layer: A blurred duplicate of the logo perfectly matching its geometry */}
          <div 
            ref={shadowRef}
-           className="absolute w-[95vw] md:w-[85vw] max-w-[1200px] h-[40vh] md:h-[600px]"
+           className="absolute w-[71vw] md:w-[64vw] max-w-[900px] h-[40vh] md:h-[450px]"
          >
            <Image 
              src="/hero_3d_text_bria.png" 
@@ -275,7 +275,7 @@ export default function HeroAssembly() {
          {/* Foreground Logo Layer */}
          <div 
            ref={logoRef} 
-           className="relative w-[95vw] md:w-[85vw] max-w-[1200px] h-[40vh] md:h-[600px]"
+           className="relative w-[71vw] md:w-[64vw] max-w-[900px] h-[40vh] md:h-[450px]"
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
