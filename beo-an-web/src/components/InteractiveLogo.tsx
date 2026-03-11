@@ -5,6 +5,10 @@ import { useFrame } from '@react-three/fiber';
 import { Float, ContactShadows, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
+/**
+ * [HERO] LEGACY 3D LOGO COMPONENT (React Three Fiber)
+ * This was an earlier iteration using a full 3D GLB model.
+ */
 export default function InteractiveLogo() {
   const groupRef = useRef<THREE.Group>(null);
 

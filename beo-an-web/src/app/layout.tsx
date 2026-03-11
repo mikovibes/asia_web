@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { DynaPuff, Nunito } from 'next/font/google';
 import './globals.css';
 
+// [HERO] Primary brand font for titles and cartoon effects
 const dynapuff = DynaPuff({ subsets: ['latin'], variable: '--font-dynapuff', weight: ['400', '700'] });
+// [HERO] Secondary font for readability and body text
 const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito', weight: ['400', '700', '900'] });
 
 export const metadata: Metadata = {
