@@ -16,6 +16,7 @@
   }
 }
 
+@layer utilities {
   /* [HERO] Cartoon Text Style */
   .text-cartoon {
     font-family: var(--font-dynapuff), sans-serif;
