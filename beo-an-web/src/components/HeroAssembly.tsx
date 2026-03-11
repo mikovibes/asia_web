@@ -29,6 +29,10 @@ export default function HeroAssembly() {
     const shadowXTo = gsap.quickTo(shadowRef.current, "x", { duration: 0.8, ease: "power3.out" });
     const shadowYTo = gsap.quickTo(shadowRef.current, "y", { duration: 0.8, ease: "power3.out" });
 
+    // Micro-parallax for the bowl itself
+    const phoRotateXTo = gsap.quickTo(phoRef.current, "rotationX", { duration: 0.7, ease: "power3.out" });
+    const phoRotateYTo = gsap.quickTo(phoRef.current, "rotationY", { duration: 0.7, ease: "power3.out" });
+
     const handleMouseMove = (e: MouseEvent) => {
       // Use window innerWidth/innerHeight for global screen tracking
       const x = e.clientX / window.innerWidth; // 0 to 1
@@ -47,6 +51,10 @@ export default function HeroAssembly() {
       // Slight positional shift towards the cursor
       translateXTo(xOffset * 15);
       translateYTo(yOffset * 15);
+
+      // Micro-parallax for the bowl (very subtle tracking)
+      phoRotateYTo(-xOffset * 5);
+      phoRotateXTo(yOffset * 5);
 
       // Shadow parallax - shadow moves opposite to light source (subtle)
       shadowXTo(-xOffset * 40);
@@ -236,12 +244,13 @@ export default function HeroAssembly() {
          <div 
            ref={phoRef}
            className="relative w-[63vw] md:w-[40vw] max-w-[630px] h-[32vh] md:h-[450px]"
+           style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
              src="/pho_soup_bria.png" 
              alt="Delicious Pho Soup" 
              fill
-             className="object-contain"
+             className="object-contain drop-shadow-[0_20px_50px_rgba(255,165,0,0.3)]"
            />
          </div>
       </div>
