@@ -5,7 +5,9 @@ import ReservationForm from "@/components/ReservationForm";
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* HERO SECTION */}
       <HeroAssembly />
+      
       <MenuGrid />
       <ReservationForm />
     </main>

@@ -7,6 +7,10 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * [HERO] Main Assembly Component
+ * Contains the 3D logo, Pho bowl, steam particles, and entrance animations.
+ */
 export default function HeroAssembly() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
@@ -73,7 +77,7 @@ export default function HeroAssembly() {
 
       // No float for phoRef.current - making it static as per user request
 
-      // Entrance Sequence: Text rises out of the Pho bowl like steam
+      // [HERO] Entrance Sequence: Text rises out of the Pho bowl like steam
       const entranceTl = gsap.timeline({
         onComplete: () => {
           // Gentle continuous floating animation starts AFTER entrance is done
@@ -221,7 +225,7 @@ export default function HeroAssembly() {
         ))}
       </div>
 
-      {/* 3D Pho Bowl & Steam System (Layered between background and main text) */}
+      {/* [HERO] 3D Pho Bowl & Steam System (Layered between background and main text) */}
       <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[12vh] md:translate-y-[15vh]">
          {/* Steam Clouds */}
          <div className="absolute inset-0 flex items-center justify-center z-[18]">
@@ -255,7 +259,7 @@ export default function HeroAssembly() {
          </div>
       </div>
 
-      {/* 2.5D Interactive Image Logo Group */}
+      {/* [HERO] 2.5D Interactive Image Logo Group */}
       <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-center w-full h-full perspective-[1200px] -translate-y-[15vh] md:-translate-y-[20vh]">
          
          {/* Shadow Layer: A blurred duplicate of the logo perfectly matching its geometry */}
