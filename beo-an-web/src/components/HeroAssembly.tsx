@@ -144,7 +144,7 @@ export default function HeroAssembly() {
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
-             src="/hero_3d_text_transparent.png" 
+             src="/hero_3d_text_bria.png" 
              alt="Béo Ăn 3D Logo" 
              fill
              className="object-contain drop-shadow-2xl"
