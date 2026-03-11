@@ -13,6 +13,7 @@ export default function HeroAssembly() {
   const logoRef = useRef<HTMLDivElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
   const phoRef = useRef<HTMLDivElement>(null);
+  const steamRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const floatingImagesRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -62,14 +63,7 @@ export default function HeroAssembly() {
         y: 200
       });
 
-      // Independent slower floating animation for the Pho Bowl
-      gsap.to(phoRef.current, {
-        y: "+=20",
-        duration: 3.2,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut"
-      });
+      // No float for phoRef.current - making it static as per user request
 
       // Entrance Sequence: Text rises out of the Pho bowl like steam
       const entranceTl = gsap.timeline({
@@ -109,6 +103,29 @@ export default function HeroAssembly() {
         { scaleX: 1, opacity: 0.35, y: 200, duration: 2, ease: "elastic.out(1, 0.7)" },
         0.5
       );
+
+      // Continuous steam particle loop
+      steamRefs.current.forEach((steam, i) => {
+        if (!steam) return;
+        gsap.to(steam, {
+          y: -400,
+          x: `+=${(Math.random() - 0.5) * 100}`,
+          opacity: 0,
+          scale: 1.5,
+          duration: 3 + Math.random() * 2,
+          repeat: -1,
+          delay: i * 0.8,
+          ease: "power1.out",
+          onRepeat: () => {
+            gsap.set(steam, { 
+              y: 0, 
+              x: (Math.random() - 0.5) * 150, 
+              opacity: 0.6, 
+              scale: 0.2 + Math.random() * 0.5 
+            });
+          }
+        });
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -196,8 +213,26 @@ export default function HeroAssembly() {
         ))}
       </div>
 
-      {/* 3D Pho Bowl (Layered between background and main text) */}
-      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[20vh] md:translate-y-[28vh]">
+      {/* 3D Pho Bowl & Steam System (Layered between background and main text) */}
+      <div className="absolute inset-0 z-15 pointer-events-none flex items-center justify-center w-full h-full perspective-[1000px] translate-y-[15vh] md:translate-y-[22vh]">
+         {/* Steam Clouds */}
+         <div className="absolute inset-0 flex items-center justify-center z-[18]">
+            {[...Array(5)].map((_, i) => (
+              <div 
+                key={i}
+                ref={(el) => { steamRefs.current[i] = el; }}
+                className="absolute w-[80px] md:w-[120px] h-[80px] md:h-[120px] opacity-0"
+              >
+                <Image 
+                  src="/steam_bria.png" 
+                  alt="Steam" 
+                  fill
+                  className="object-contain brightness-110 contrast-75"
+                />
+              </div>
+            ))}
+         </div>
+
          <div 
            ref={phoRef}
            className="relative w-[70vw] md:w-[45vw] max-w-[700px] h-[35vh] md:h-[500px]"
@@ -206,7 +241,7 @@ export default function HeroAssembly() {
              src="/pho_soup_bria.png" 
              alt="Delicious Pho Soup" 
              fill
-             className="object-contain drop-shadow-2xl"
+             className="object-contain"
            />
          </div>
       </div>
