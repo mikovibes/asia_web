@@ -243,7 +243,7 @@ export default function HeroAssembly() {
 
          <div 
            ref={phoRef}
-           className="relative w-[45vw] md:w-[28vw] max-w-[450px] h-[30vh] md:h-[350px] translate-x-[0.5vw]"
+           className="relative w-[45vw] md:w-[28vw] max-w-[450px] h-[30vh] md:h-[350px] translate-x-[0.7vw]"
            style={{ transformStyle: "preserve-3d" }}
          >
            <Image 
