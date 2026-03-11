@@ -11,15 +11,21 @@ export default function HeroAssembly() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const shadowRef = useRef<HTMLDivElement>(null);
   
   const floatingImagesRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    if (!containerRef.current || !logoRef.current) return;
+    if (!containerRef.current || !logoRef.current || !shadowRef.current) return;
     
     // QuickSetters for hyper-smooth parallax
-    const xTo = gsap.quickTo(logoRef.current, "rotationY", { duration: 0.6, ease: "power3.out" });
-    const yTo = gsap.quickTo(logoRef.current, "rotationX", { duration: 0.6, ease: "power3.out" });
+    const rotateXTo = gsap.quickTo(logoRef.current, "rotationX", { duration: 0.6, ease: "power3.out" });
+    const rotateYTo = gsap.quickTo(logoRef.current, "rotationY", { duration: 0.6, ease: "power3.out" });
+    const translateXTo = gsap.quickTo(logoRef.current, "x", { duration: 0.6, ease: "power3.out" });
+    const translateYTo = gsap.quickTo(logoRef.current, "y", { duration: 0.6, ease: "power3.out" });
+
+    const shadowXTo = gsap.quickTo(shadowRef.current, "x", { duration: 0.8, ease: "power3.out" });
+    const shadowYTo = gsap.quickTo(shadowRef.current, "y", { duration: 0.8, ease: "power3.out" });
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
@@ -31,9 +37,19 @@ export default function HeroAssembly() {
       const xOffset = (x - 0.5) * 2;
       const yOffset = (y - 0.5) * 2;
 
-      // Max tilt 20 degrees
-      xTo(xOffset * 20);
-      yTo(-yOffset * 20);
+      // Make the logo "face" the cursor
+      // If mouse is on right (xOffset > 0), rotateY should be negative to bring right side closer
+      rotateYTo(-xOffset * 25);
+      // If mouse is at bottom (yOffset > 0), rotateX should be positive to bring bottom side closer
+      rotateXTo(yOffset * 25);
+      
+      // Slight positional shift towards the cursor
+      translateXTo(xOffset * 30);
+      translateYTo(yOffset * 30);
+
+      // Shadow moves away from the cursor (parallax effect)
+      shadowXTo(-xOffset * 60);
+      shadowYTo(-yOffset * 60 + 40); // Base shadow offset of +40px downwards
     };
 
     containerRef.current.addEventListener("mousemove", handleMouseMove);
@@ -41,7 +57,19 @@ export default function HeroAssembly() {
     const ctx = gsap.context(() => {
       // Gentle continuous floating animation
       gsap.to(logoRef.current, {
-        y: "-=20",
+        y: "-=25",
+        duration: 2.5,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+
+      // Shadow scales and diffuses as the object "floats" higher
+      gsap.to(shadowRef.current, {
+        y: "+=15",
+        opacity: 0.25,
+        scale: 0.95,
+        filter: "blur(35px)",
         duration: 2.5,
         yoyo: true,
         repeat: -1,
@@ -82,9 +110,9 @@ export default function HeroAssembly() {
         );
       });
 
-      // The 2.5D logo scales down and moves up
+      // The 2.5D logo and shadow scale down and move up on scroll
       tl.to(
-        logoRef.current,
+        [logoRef.current, shadowRef.current],
         { scale: 0.5, y: -300, ease: "power2.inOut" },
         0
       );
@@ -136,8 +164,24 @@ export default function HeroAssembly() {
         ))}
       </div>
 
-      {/* 2.5D Interactive Image Logo */}
+      {/* 2.5D Interactive Image Logo Group */}
       <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-center w-full h-full perspective-[1200px]">
+         
+         {/* Shadow Layer: A blurred duplicate of the logo perfectly matching its geometry */}
+         <div 
+           ref={shadowRef}
+           className="absolute w-[90vw] md:w-[70vw] max-w-[1000px] h-[30vh] md:h-[500px] opacity-40 blur-2xl"
+         >
+           <Image 
+             src="/hero_3d_text_bria.png" 
+             alt="Logo Shadow" 
+             fill
+             className="object-contain brightness-0"
+             priority
+           />
+         </div>
+
+         {/* Foreground Logo Layer */}
          <div 
            ref={logoRef} 
            className="relative w-[90vw] md:w-[70vw] max-w-[1000px] h-[30vh] md:h-[500px]"
@@ -147,7 +191,7 @@ export default function HeroAssembly() {
              src="/hero_3d_text_bria.png" 
              alt="Béo Ăn 3D Logo" 
              fill
-             className="object-contain drop-shadow-2xl"
+             className="object-contain"
              priority
            />
          </div>
